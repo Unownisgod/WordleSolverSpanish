@@ -1,0 +1,71 @@
+<div class="container ">
+
+  <!--KeyLetters-->
+  <div class="row">
+    <h1 class="text-center">Letras Correctas Descubiertas</h1>
+    <hr />
+  </div>
+  <div class="row mb-5">
+    <div class="input-group mt-5 justify-content-center">
+      <input class="text rounded m-1 border-2 border-success shadow-lg" type="text" size="1" maxlength="1" id="letter1" />
+      <input class="text rounded m-1 border-2 border-success shadow-lg" type="text" size="1" maxlength="1" id="letter2" />
+      <input class="text rounded m-1 border-2 border-success shadow-lg" type="text" size="1" maxlength="1" id="letter3" />
+      <input class="text rounded m-1 border-2 border-success shadow-lg" type="text" size="1" maxlength="1" id="letter4" />
+      <input class="text rounded m-1 border-2 border-success shadow-lg" type="text" size="1" maxlength="1" id="letter5" />
+    </div>
+  </div>
+
+  <div class="row">
+    <h1 class="text-center">Letras Descubiertas</h1>
+    <hr />
+  </div>
+
+  <div class="row mb-5">
+    <div class="input-group mt-5 justify-content-center">
+      <input class="text rounded m-1 border-2 border-warning shadow-lg" type="text" size="1" maxlength="1" id="discoveredletter1" />
+      <input class="text rounded m-1 border-2 border-warning shadow-lg" type="text" size="1" maxlength="1" id="discoveredletter2" />
+      <input class="text rounded m-1 border-2 border-warning shadow-lg" type="text" size="1" maxlength="1" id="discoveredletter3" />
+      <input class="text rounded m-1 border-2 border-warning shadow-lg" type="text" size="1" maxlength="1" id="discoveredletter4" />
+      <input class="text rounded m-1 border-2 border-warning shadow-lg" type="text" size="1" maxlength="1" id="discoveredletter5" />
+    </div>
+  </div>
+
+  <div class="row">
+    <h1 class="text-center">Letras Que No Aparecen</h1>
+    <hr />
+  </div>
+
+  <div class="row mb-5">
+    <div class="input-group mt-5 justify-content-center">
+      <input class="text-center text rounded m-1 border-2 border-secondary shadow-lg" type="text" size="30" maxlength="30" id="unusedletters" />
+    </div>
+  </div>
+
+
+  <div class="d-flex justify-content-center mt-5">
+    <button class="btn btn-primary" (click)="search()">
+      Buscar palabras
+    </button>
+  </div>
+  <div id="solutions" class="d-none">
+
+    <h1 class="text-center ">Palabras más probables</h1>
+    <hr />
+    <div class="d-flex justify-content-center flex-wrap m-5" id="probableWords">
+    </div>
+
+
+    <h1 class="text-center">Letras más probables</h1>
+    <hr />
+    <div class="row justify-content-center m-5" id="probableLetters">
+
+    </div>
+
+    <h1 class="text-center mt-5">Palabras posibles</h1>
+    <hr />
+    <div class="d-flex justify-content-center flex-wrap" id="possibleWords">
+    </div>
+
+  </div>
+</div>
+ 
