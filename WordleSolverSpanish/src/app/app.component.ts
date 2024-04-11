@@ -135,7 +135,6 @@ export class AppComponent {
     document.getElementById("solutions")!.classList.remove("d-none");
   }
 
-  
 
-  title = 'WordleSolverSpanish';
+  title = 'Solucionador de wordles';
 }
