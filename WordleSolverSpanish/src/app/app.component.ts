@@ -119,9 +119,9 @@ export class AppComponent {
       probableLetters?.append(probableLetterElement)
       probableLetterElement.append(probableLetterTextElement)
     }
+    var max = 0
     this.possibleWordlist.forEach((word) => {
       var c = 0
-      
       for (let i = 0; i < this.wordsToIterate; i++) {
         if (word.search(sorted[i][0]) != -1) {
           c++
@@ -129,7 +129,7 @@ export class AppComponent {
       }
       this.coincidences.push(c)
     })
-    var max = this.coincidences.reduce((a, b) => Math.max(a, b));
+    max = this.coincidences.reduce((a, b) => Math.max(a, b));
     var probableWords = document.getElementById("probableWords")
     probableWords!.replaceChildren()
 
