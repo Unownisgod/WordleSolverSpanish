@@ -13,6 +13,7 @@ export class AppComponent {
   letters!: Array<string>
   discoveredletters!: Array<string>
   letter="qwertyuiopasdfghjklkñzxcvbnm"
+    wordsToIterate: any;
   constructor(private http: HttpClient) { }
   ngOnInit() {
     this.http.get('../assets/WordList.txt', { responseType: 'text' }).subscribe(data => {
@@ -41,18 +42,18 @@ export class AppComponent {
     var unusedlettersInput = document.getElementById('unusedletters') as HTMLInputElement;
 
     this.letters = [];
-    this.letters.push(letter1.value);
-    this.letters.push(letter2.value);
-    this.letters.push(letter3.value);
-    this.letters.push(letter4.value);
-    this.letters.push(letter5.value);
+    this.letters.push(letter1.value.toLocaleLowerCase());
+    this.letters.push(letter2.value.toLocaleLowerCase());
+    this.letters.push(letter3.value.toLocaleLowerCase());
+    this.letters.push(letter4.value.toLocaleLowerCase());
+    this.letters.push(letter5.value.toLocaleLowerCase());
 
     this.discoveredletters = [];
-    this.discoveredletters.push(discoveredletter1.value);
-    this.discoveredletters.push(discoveredletter2.value);
-    this.discoveredletters.push(discoveredletter3.value);
-    this.discoveredletters.push(discoveredletter4.value);
-    this.discoveredletters.push(discoveredletter5.value);
+    this.discoveredletters.push(discoveredletter1.value.toLocaleLowerCase());
+    this.discoveredletters.push(discoveredletter2.value.toLocaleLowerCase());
+    this.discoveredletters.push(discoveredletter3.value.toLocaleLowerCase());
+    this.discoveredletters.push(discoveredletter4.value.toLocaleLowerCase());
+    this.discoveredletters.push(discoveredletter5.value.toLocaleLowerCase());
 
     var usedletters = unusedlettersInput.value;
 
@@ -62,8 +63,7 @@ export class AppComponent {
 
         if (word.search(this.discoveredletters[0]) !== -1 && word.search(this.discoveredletters[1]) !== -1 && word.search(this.discoveredletters[2]) !== -1 && word.search(this.discoveredletters[3]) !== -1 && word.search(this.discoveredletters[4]) !== -1) {
           for (let i = 0; i < usedletters.length; i++) {
-            var test6 = word.search(usedletters.charAt(i))
-            if (word.search(usedletters.charAt(i)) === -1) {
+            if (word.search(usedletters.charAt(i).toLocaleLowerCase()) === -1) {
               c++;
             }
             else {
@@ -91,7 +91,14 @@ export class AppComponent {
       return !this.letters.includes(item[0]) && !this.discoveredletters.includes(item[0]) && !usedletters.includes(item[0]) && item[1] > 0
     })
     probableLetters?.replaceChildren();
-    for (let i = 0; i < 5; i++) {
+    this.wordsToIterate
+    if (sorted.length < 5) {
+      this.wordsToIterate = sorted.length
+    }
+    else {
+      this.wordsToIterate = 5
+    }
+    for (let i = 0; i < this.wordsToIterate; i++) {
       let probableLetterElement = document.createElement("div")
       let probableLetterTextElement = document.createElement("p")
       probableLetterTextElement.innerHTML = sorted[i][0].toLocaleUpperCase()
@@ -112,10 +119,10 @@ export class AppComponent {
       probableLetters?.append(probableLetterElement)
       probableLetterElement.append(probableLetterTextElement)
     }
-
     this.possibleWordlist.forEach((word) => {
       var c = 0
-      for (let i = 0; i < 5; i++) {
+      
+      for (let i = 0; i < this.wordsToIterate; i++) {
         if (word.search(sorted[i][0]) != -1) {
           c++
         }
